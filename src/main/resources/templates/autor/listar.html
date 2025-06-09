@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Autores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: white;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      background-color: #4CAF50;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 5px;
+    }
+    .delete-btn {
+      background-color: #f44336;
+    }
+    .add-btn {
+      margin-bottom: 20px;
+      display: block;
+      width: 200px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<h1>Listado de Autores</h1>
+<a href="/autores/nuevo" class="add-btn">Agregar Autor</a>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombres</th>
+    <th>Primer Apellido</th>
+    <th>Segundo Apellido</th>
+    <th>DNI</th>
+    <th>Profesión</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="autor : ${autores}">
+    <td th:text="${autor.idAutor}"></td>
+    <td th:text="${autor.nombres}"></td>
+    <td th:text="${autor.primerApellido}"></td>
+    <td th:text="${autor.segundoApellido}"></td>
+    <td th:text="${autor.dni}"></td>
+    <td th:text="${autor.profesion}"></td>
+    <td>
+      <a href="#" th:href="@{/autores/eliminar/{id}(id=${autor.idAutor})}" class="delete-btn">Eliminar</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
